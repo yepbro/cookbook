@@ -1,5 +1,7 @@
 <div>
     <div>
-        <h1>Текстовая страница</h1>
+        <h1>{{ $page->heading }}</h1>
+
+        {!! $page->content !!}
     </div>
 </div>
