@@ -42,7 +42,7 @@
                     <img src="/assets/img/logo.svg" alt="logo"/>
                 </span>
             <p class="hidden font-body text-2xl font-bold text-primary dark:text-white lg:block">
-                COOKBOOK
+                {{ config('app.name') }}
             </p>
         </a>
         <div class="flex items-center lg:hidden">
@@ -106,7 +106,11 @@
                 <img src="/assets/img/logo.svg" alt="logo"/>
             </a>
             <p class="pt-5 font-body font-light text-primary dark:text-white sm:pt-0">
-                ©2020 John Doe.
+                ©{{ config('app.from_year') }}
+                @if(config('app.from_year') !== date('Y'))
+                    — date('Y')
+                @endif
+                {{ config('app.name') }}.
             </p>
         </div>
         <div class="mr-auto flex items-center pt-5 sm:mr-0 sm:pt-0">
