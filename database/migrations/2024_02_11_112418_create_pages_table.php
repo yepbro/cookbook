@@ -7,13 +7,12 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author_id')->comment('Автор')->constrained('users');
-            $table->string('heading')->comment('Заголовок');
+            $table->string('name')->comment('Название');
             $table->string('slug')->unique()->comment('Слаг для урл');
             $table->text('content')->comment('Контент');
-            $table->boolean('is_published')->default(false)->comment('Признак, что статья опубликована');
+            $table->boolean('is_published')->default(false)->comment('Признак, что страница опубликована');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -21,6 +20,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('pages');
     }
 };

@@ -2,14 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Article;
-use App\Models\User;
+use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Article>
+ * @extends Factory<Page>
  */
-class ArticleFactory extends Factory
+class PageFactory extends Factory
 {
     /**
      * @return array<string, mixed>
@@ -17,8 +16,7 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'author_id' => User::factory(),
-            'heading' => trim(fake()->sentence(), '.'),
+            'name' => trim(fake()->sentence(2), '.'),
             'slug' => fake()->unique()->slug(),
             'content' => fake()->paragraph(),
             'is_published' => fake()->boolean(80),
