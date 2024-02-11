@@ -21,7 +21,7 @@ class Dashboard extends Page
     }
 
     public function components(): array
-	{
-		return [];
-	}
+    {
+        return [];
+    }
 }
