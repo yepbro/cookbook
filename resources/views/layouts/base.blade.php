@@ -2,14 +2,27 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        name="viewport"
+    />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
+
+    <link
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="preload"
+    />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -17,28 +30,112 @@
     <!-- Styles -->
     @livewireStyles
 </head>
-<body class="font-sans antialiased">
-<x-banner/>
+<body
+    x-data="{isMobileMenuOpen: false}"
+    :class="isMobileMenuOpen ? 'max-h-screen overflow-hidden relative' : ''"
+>
 
-<div class="min-h-screen bg-gray-100">
-    @livewire('navigation-menu')
+<header class="container mx-auto">
+    <div class="flex items-center justify-between py-6 lg:py-10">
+        <a href="{{ route('pages.home') }}" class="flex items-center">
+                <span class="mr-2">
+                    <img src="/assets/img/logo.svg" alt="logo"/>
+                </span>
+            <p class="hidden font-body text-2xl font-bold text-primary dark:text-white lg:block">
+                COOKBOOK
+            </p>
+        </a>
+        <div class="flex items-center lg:hidden">
+            <i
+                class="bx mr-8 cursor-pointer text-3xl text-primary dark:text-white"
+                @click="themeSwitch()"
+                :class="isDarkMode ? 'bxs-sun' : 'bxs-moon'"
+            ></i>
 
-    <!-- Page Heading -->
-    @if (isset($header))
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
-    @endif
+            <svg
+                width="24"
+                height="15"
+                xmlns="http://www.w3.org/2000/svg"
+                @click="isMobileMenuOpen = true"
+                class="fill-current text-primary dark:text-white"
+            >
+                <g fill-rule="evenodd">
+                    <rect width="24" height="3" rx="1.5"/>
+                    <rect x="8" y="6" width="16" height="3" rx="1.5"/>
+                    <rect x="4" y="12" width="20" height="3" rx="1.5"/>
+                </g>
+            </svg>
+        </div>
+        <div class="hidden lg:block">
+            <ul class="flex items-center">
 
-    <!-- Page Content -->
-    <main>
-        {{ $slot }}
-    </main>
-</div>
+                <li class="group relative mr-6 mb-1">
+                    <div
+                        class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"
+                    ></div>
+                    <a
+                        href="/"
+                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
+                    >Intro</a
+                    >
+                </li>
 
-@stack('modals')
+                <li class="group relative mr-6 mb-1">
+                    <div
+                        class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"
+                    ></div>
+                    <a
+                        href="/blog"
+                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
+                    >Blog</a
+                    >
+                </li>
+
+                <li class="group relative mr-6 mb-1">
+                    <div
+                        class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"
+                    ></div>
+                    <a
+                        href="/uses"
+                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
+                    >Uses</a
+                    >
+                </li>
+
+                <li class="group relative mr-6 mb-1">
+                    <div
+                        class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"
+                    ></div>
+                    <a
+                        href="/contact"
+                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
+                    >Contact</a
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    {{ $slot }}
+</main>
+
+<footer class="container mx-auto">
+    <div class="flex flex-col items-center justify-between border-t border-grey-lighter py-10 sm:flex-row sm:py-12">
+        <div class="mr-auto flex flex-col items-center sm:flex-row">
+            <a href="/" class="mr-auto sm:mr-6">
+                <img src="/assets/img/logo.svg" alt="logo"/>
+            </a>
+            <p class="pt-5 font-body font-light text-primary dark:text-white sm:pt-0">
+                ©2020 John Doe.
+            </p>
+        </div>
+        <div class="mr-auto flex items-center pt-5 sm:mr-0 sm:pt-0">
+
+        </div>
+    </div>
+</footer>
 
 @livewireScripts
 </body>

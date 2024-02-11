@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    @apply font-body antialiased;
+}
+
 [x-cloak] {
     display: none;
+}
+
+.container {
+    max-width: 600px;
+
+    @screen sm {
+        max-width: 700px;
+    }
+
+    @screen md {
+        max-width: 850px;
+    }
 }
