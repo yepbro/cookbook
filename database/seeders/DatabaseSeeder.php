@@ -15,5 +15,10 @@ class DatabaseSeeder extends Seeder
             '--name' => 'Denis',
             '--password' => 'password',
         ]);
+
+        $this->call([
+            UserSeeder::class,
+            ArticleSeeder::class,
+        ]);
     }
 }
