@@ -74,9 +74,9 @@
                         class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"
                     ></div>
                     <a
-                        href="/"
+                        href="{{ route('pages.tags.index') }}"
                         class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
-                    >Intro</a
+                    >Все теги</a
                     >
                 </li>
 
@@ -85,31 +85,9 @@
                         class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"
                     ></div>
                     <a
-                        href="/blog"
+                        href="#"
                         class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
-                    >Blog</a
-                    >
-                </li>
-
-                <li class="group relative mr-6 mb-1">
-                    <div
-                        class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"
-                    ></div>
-                    <a
-                        href="/uses"
-                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
-                    >Uses</a
-                    >
-                </li>
-
-                <li class="group relative mr-6 mb-1">
-                    <div
-                        class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"
-                    ></div>
-                    <a
-                        href="/contact"
-                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
-                    >Contact</a
+                    >Все рецепты</a
                     >
                 </li>
             </ul>
