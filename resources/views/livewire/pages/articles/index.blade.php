@@ -1,6 +1,4 @@
 <div>
-    <h1>Все рецепты</h1>
-
     <div class="pt-8 lg:pt-12">
         @foreach($articles as $article)
             <div class="border-b border-grey-lighter pb-8 @if(!$loop->first) pt-10 @endif">

@@ -97,7 +97,21 @@
 
 <main>
     <div class="container mx-auto">
-    {{ $slot }}
+        @if($header ?? false)
+            <h1 class="pt-5 font-body text-4xl font-semibold text-primary dark:text-white md:text-5xl lg:text-6xl">
+                {{ $header }}
+            </h1>
+        @endif
+
+        @if($desc ?? false)
+            <div class="pt-3 sm:w-3/4">
+                <p class="font-body text-xl font-light text-primary dark:text-white">
+                    {{ $desc }}
+                </p>
+            </div>
+        @endif
+
+        {{ $slot }}
     </div>
 </main>
 

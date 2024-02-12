@@ -22,6 +22,9 @@ class Show extends Component
 
     public function render(): View|Application|Factory|CApplication
     {
-        return view('livewire.pages.articles.show');
+        return view('livewire.pages.articles.show')
+            ->layoutData([
+                'header' => $this->article->heading,
+            ]);
     }
 }

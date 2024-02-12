@@ -24,6 +24,8 @@ class Index extends Component
 
     public function render(): View|Application|Factory|CApplication
     {
-        return view('livewire.pages.tags.index');
+        return view('livewire.pages.tags.index')->layoutData([
+            'header' => 'Все теги',
+        ]);
     }
 }

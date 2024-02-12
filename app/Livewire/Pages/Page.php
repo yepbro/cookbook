@@ -22,6 +22,9 @@ class Page extends Component
 
     public function render(): View|Application|Factory|CApplication
     {
-        return view('livewire.pages.page');
+        return view('livewire.pages.page')
+            ->layoutData([
+                'header' => $this->page->name,
+            ]);
     }
 }

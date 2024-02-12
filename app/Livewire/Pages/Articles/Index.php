@@ -23,6 +23,8 @@ class Index extends Component
     {
         return view('livewire.pages.articles.index', [
             'articles' => Article::with('tags')->paginate(10),
+        ])->layoutData([
+            'header' => 'Все рецепты',
         ]);
     }
 }

@@ -22,6 +22,8 @@ class Show extends Component
     {
         return view('livewire.pages.tags.show', [
             'articles' => $this->tag->articles()->published()->get(),
+        ])->layoutData([
+            'header' => 'Тег ' . $this->tag->name,
         ]);
     }
 }

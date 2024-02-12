@@ -12,6 +12,8 @@ class Search extends Component
 {
     public function render(): View|Application|Factory|CApplication
     {
-        return view('livewire.pages.search');
+        return view('livewire.pages.search')->layoutData([
+            'header' => 'Результаты поиска',
+        ]);
     }
 }

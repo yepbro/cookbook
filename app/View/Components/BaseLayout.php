@@ -6,6 +6,14 @@ use Illuminate\View\Component;
 
 class BaseLayout extends Component
 {
+    public function __construct(
+        public string $header = '',
+        public string $desc = '',
+    )
+    {
+        //
+    }
+
     public function render()
     {
         return view('layouts.base');
