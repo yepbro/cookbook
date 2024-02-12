@@ -1,11 +1,9 @@
 <div>
-    <ol>
-        @foreach($articles as $article)
-            <li>
-                <a href="{{ route('pages.items.show', $article) }}">
-                    {{ $article->heading }}
-                </a>
-            </li>
-        @endforeach
-    </ol>
+    <div class="pt-8 lg:pt-12">
+        <x-articles :articles="$articles"/>
+    </div>
+
+    <div class="flex pt-8 lg:pt-16">
+        {{ $articles->links('atlas-paginator') }}
+    </div>
 </div>

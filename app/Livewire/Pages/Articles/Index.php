@@ -14,11 +14,6 @@ class Index extends Component
 {
     use WithPagination;
 
-    public function mount(): void
-    {
-        //
-    }
-
     public function render(): View|Application|Factory|CApplication
     {
         return view('livewire.pages.articles.index', [

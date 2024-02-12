@@ -22,11 +22,12 @@ class TagFactory extends Factory
             'name' => $tag,
             'slug' => Str::of($tag)->slug()->toString(),
             'class' => fake()->optional(0.9)->randomElement([
-                'bg-red-200',
+                'bg-red2-200',
                 'bg-orange-200',
                 'bg-amber-200',
                 'bg-lime-200',
                 'bg-green2-200',
+                'bg-yellow2-200',
                 'bg-cyan-200',
                 'bg-violet-200',
                 'bg-pink-200',
