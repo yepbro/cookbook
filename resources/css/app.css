@@ -16,6 +16,12 @@ body {
     display: none;
 }
 
+.footer-menu {
+    display: grid;
+    @apply grid-cols-2;
+    gap: 10px 20px;
+}
+
 a.active {
     border-bottom: 1px solid #000;
 }

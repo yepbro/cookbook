@@ -141,8 +141,15 @@
                 {{ config('app.name') }}
             </p>
         </div>
-        <div class="mr-auto flex items-center pt-5 sm:mr-0 sm:pt-0">
+        <div class="mr-auto footer-menu pt-5 sm:mr-0 sm:pt-0">
+            @foreach($footerLinks as $link)
+                <div class="text-right">
+                    <a href="{{ route('pages.pages.show', $link) }}" @class([
+    'active' => Route::is('pages.pages.show') && request()->route()->originalParameter('page') === $link->slug,
+])>{{ $link->name }}</a>
+                </div>
 
+            @endforeach
         </div>
     </div>
 </footer>
