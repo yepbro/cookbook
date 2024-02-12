@@ -1,16 +1,11 @@
-<?php
-/**
- * @var \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tag
- */
-?>
-<div>
-    <ol>
+<div class="pt-8 lg:pt-12">
+    <ul class="list-disc list-inside">
         @foreach($tags as $tag)
-            <li>
+            <li class="mb-4">
                 <a href="{{ route('pages.tags.show', $tag) }}">
-                    {{ $tag->name }}
+                    {{ $tag->name }} ({{ $tag->articles_count }})
                 </a>
             </li>
         @endforeach
-    </ol>
+    </ul>
 </div>

@@ -19,13 +19,17 @@ class Index extends Component
 
     public function mount(): void
     {
-        $this->tags = Tag::all();
+        $this->tags = Tag::withCount('articles')
+            ->has('articles')
+            ->orderByDesc('articles_count')
+            ->get();
     }
 
     public function render(): View|Application|Factory|CApplication
     {
-        return view('livewire.pages.tags.index')->layoutData([
-            'header' => 'Все теги',
-        ]);
+        return view('livewire.pages.tags.index')
+            ->layoutData([
+                'header' => 'Все теги',
+            ]);
     }
 }
