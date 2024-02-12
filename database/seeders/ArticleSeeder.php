@@ -21,7 +21,7 @@ class ArticleSeeder extends Seeder
             ->state(new Sequence(
                 fn(Sequence $sequence) => ['author_id' => $authors->random()],
             ))
-            ->hasAttached($tags->random(3), [], 'tags')
-            ->create();
+            ->create()
+            ->each(fn(Article $article) => $article->tags()->attach($tags->random(3)));
     }
 }
