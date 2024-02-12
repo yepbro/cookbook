@@ -8,9 +8,12 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+
     public function mount(): void
     {
         //
@@ -19,7 +22,7 @@ class Index extends Component
     public function render(): View|Application|Factory|CApplication
     {
         return view('livewire.pages.articles.index', [
-            'articles' => Article::with('tags')->get(),
+            'articles' => Article::with('tags')->paginate(10),
         ]);
     }
 }

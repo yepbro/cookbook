@@ -23,4 +23,8 @@
             </div>
         @endforeach
     </div>
+
+    <div class="flex pt-8 lg:pt-16">
+        {{ $articles->links('atlas-paginator') }}
+    </div>
 </div>
