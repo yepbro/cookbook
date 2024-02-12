@@ -80,7 +80,10 @@
                     ></div>
                     <a
                         href="{{ route('pages.tags.index') }}"
-                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green"
+                        @class([
+    'active' => Route::is('pages.tags.index'),
+    'relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green',
+])
                     >Все теги</a
                     >
                 </li>
@@ -91,7 +94,10 @@
                     ></div>
                     <a
                         href="{{ route('pages.items.index') }}"
-                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green"
+                        @class([
+    'active' => Route::is('pages.items.index'),
+    'relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green',
+])
                     >Все рецепты</a
                     >
                 </li>
