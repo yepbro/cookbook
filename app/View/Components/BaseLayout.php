@@ -9,6 +9,7 @@ class BaseLayout extends Component
     public function __construct(
         public string $header = '',
         public string $desc = '',
+        public string $title = '',
     )
     {
         //

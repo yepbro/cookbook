@@ -9,7 +9,12 @@
     />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>
+        @if($title ?? false)
+            {{ $title }} |
+        @endif
+        {{ config('app.name', 'Laravel') }}
+    </title>
 
     <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
 
