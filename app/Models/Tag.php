@@ -15,7 +15,13 @@ class Tag extends Model
     protected $fillable = [
         'name',
         'slug',
+        'class',
     ];
+
+    public function getClass(): string
+    {
+        return $this->class ?: 'bg-green-light';
+    }
 
     public function articles(): BelongsToMany
     {

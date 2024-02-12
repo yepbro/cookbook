@@ -2,6 +2,8 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 
+const colors = require('tailwindcss/colors')
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -9,6 +11,12 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+    ],
+
+    safelist: [
+        {
+            pattern: /bg-[a-z0-9]+-200/,
+        },
     ],
 
     theme: {
@@ -41,6 +49,28 @@ export default {
             "grey-lighter": "#eceef1",
             "grey-light": "#ccd7e0",
             grey: "#adb6c4",
+            slate: colors.slate,
+            gray: colors.gray,
+            zinc: colors.zinc,
+            neutral: colors.neutral,
+            stone: colors.stone,
+            red2: colors.red,
+            orange: colors.orange,
+            amber: colors.amber,
+            yellow2: colors.yellow, // double
+            lime: colors.lime,
+            green2: colors.green, // double
+            emerald: colors.emerald,
+            teal: colors.teal,
+            cyan: colors.cyan,
+            sky: colors.sky,
+            blue2: colors.blue, // double
+            indigo: colors.indigo,
+            violet: colors.violet,
+            purple: colors.purple,
+            fuchsia: colors.fuchsia,
+            pink: colors.pink,
+            rose: colors.rose,
         },
 
         border: {
@@ -137,23 +167,6 @@ export default {
                                 margin: 0,
                                 fontWeight: theme("fontWeight.normal"),
                             },
-                        },
-                    },
-                },
-                dark: {
-                    css: {
-                        color: theme("colors.white"),
-                        a: {
-                            color: theme("colors.secondary"),
-                            "&:hover": {
-                                color: theme("colors.green"),
-                            },
-                        },
-                        "h1, h2, h3, h4, h5, h6": {
-                            color: theme("colors.white"),
-                        },
-                        "ul > li::before": {
-                            backgroundColor: theme("colors.secondary"),
                         },
                     },
                 },
