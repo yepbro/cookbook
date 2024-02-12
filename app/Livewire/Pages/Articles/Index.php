@@ -22,7 +22,7 @@ class Index extends Component
     public function render(): View|Application|Factory|CApplication
     {
         return view('livewire.pages.articles.index', [
-            'articles' => Article::with('tags')->paginate(10),
+            'articles' => Article::with('tags')->published()->paginate(10),
         ])->layoutData([
             'header' => 'Все рецепты',
         ]);
