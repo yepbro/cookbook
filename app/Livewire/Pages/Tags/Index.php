@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Livewire\Pages;
+namespace App\Livewire\Pages\Tags;
 
-use App\Models\Tag as TagModel;
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application as CApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -10,20 +10,20 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Application;
 use Livewire\Component;
 
-class Tags extends Component
+class Index extends Component
 {
     /**
-     * @var Collection<int, TagModel>
+     * @var Collection<int, Tag>
      */
     public Collection $tags;
 
     public function mount(): void
     {
-        $this->tags = TagModel::all();
+        $this->tags = Tag::all();
     }
 
     public function render(): View|Application|Factory|CApplication
     {
-        return view('livewire.pages.tags');
+        return view('livewire.pages.tags.index');
     }
 }
