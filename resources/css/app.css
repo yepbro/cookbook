@@ -26,6 +26,18 @@ a.active {
     border-bottom: 1px solid #000;
 }
 
+a.link {
+    @apply text-blue2-500 underline;
+}
+
+a.link:hover {
+    @apply text-blue2-700;
+}
+
+a.link:visited {
+    @apply text-violet-500;
+}
+
 .container {
     max-width: 600px;
 
