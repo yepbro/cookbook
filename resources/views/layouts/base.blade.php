@@ -16,7 +16,7 @@
         {{ config('app.name', 'Laravel') }}
     </title>
 
-    <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link crossorigin="anonymous" href="https://fonts.googleapis.com" rel="preconnect"/>
 
     <link
         as="style"
@@ -46,13 +46,13 @@
                 <span class="mr-2">
                     <img src="/assets/img/logo.svg" alt="logo"/>
                 </span>
-            <p class="hidden font-body text-2xl font-bold text-primary dark:text-white lg:block">
+            <p class="hidden font-body text-2xl font-bold text-primary lg:block">
                 {{ config('app.name') }}
             </p>
         </a>
         <div class="flex items-center lg:hidden">
             <i
-                class="bx mr-8 cursor-pointer text-3xl text-primary dark:text-white"
+                class="bx mr-8 cursor-pointer text-3xl text-primary"
                 @click="themeSwitch()"
                 :class="isDarkMode ? 'bxs-sun' : 'bxs-moon'"
             ></i>
@@ -62,7 +62,7 @@
                 height="15"
                 xmlns="http://www.w3.org/2000/svg"
                 @click="isMobileMenuOpen = true"
-                class="fill-current text-primary dark:text-white"
+                class="fill-current text-primary"
             >
                 <g fill-rule="evenodd">
                     <rect width="24" height="3" rx="1.5"/>
@@ -80,7 +80,7 @@
                     ></div>
                     <a
                         href="{{ route('pages.tags.index') }}"
-                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
+                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green"
                     >Все теги</a
                     >
                 </li>
@@ -91,7 +91,7 @@
                     ></div>
                     <a
                         href="{{ route('pages.items.index') }}"
-                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary"
+                        class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green"
                     >Все рецепты</a
                     >
                 </li>
@@ -104,14 +104,14 @@
     <div class="container mx-auto">
 
     @if($header ?? false)
-            <h1 class="pt-5 font-body text-4xl font-semibold text-primary dark:text-white md:text-5xl lg:text-6xl">
+            <h1 class="pt-5 font-body text-4xl font-semibold text-primary md:text-5xl lg:text-6xl">
                 {{ $header }}
             </h1>
         @endif
 
         @if($desc ?? false)
             <div class="pt-3 sm:w-3/4">
-                <p class="font-body text-xl font-light text-primary dark:text-white">
+                <p class="font-body text-xl font-light text-primary">
                     {{ $desc }}
                 </p>
             </div>
@@ -127,7 +127,7 @@
             <a href="/" class="mr-auto sm:mr-6">
                 <img src="/assets/img/logo.svg" alt="logo"/>
             </a>
-            <p class="pt-5 font-body font-light text-primary dark:text-white sm:pt-0">
+            <p class="pt-5 font-body font-light text-primary sm:pt-0">
                 ©{{ config('app.from_year') }}
                 @if(config('app.from_year') !== date('Y'))
                     — date('Y')
