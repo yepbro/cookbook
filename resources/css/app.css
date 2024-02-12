@@ -6,6 +6,10 @@ html {
     @apply font-body antialiased;
 }
 
+body {
+    overflow-y: scroll;
+}
+
 [x-cloak] {
     display: none;
 }
