@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('slug')->unique()->comment('Слаг для урл');
             $table->text('content')->comment('Контент');
             $table->boolean('is_published')->default(false)->comment('Признак, что страница опубликована');
+            $table->boolean('show_in_menu')->default(false)->comment('Признак, что страница должна быть выведена в меню');
             $table->timestamps();
             $table->softDeletes();
         });

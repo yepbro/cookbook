@@ -20,6 +20,7 @@ class PageFactory extends Factory
             'slug' => fake()->unique()->slug(),
             'content' => fake()->paragraph(),
             'is_published' => fake()->boolean(80),
+            'show_in_menu' => fake()->boolean(80),
         ];
     }
 }
