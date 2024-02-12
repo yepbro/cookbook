@@ -96,7 +96,9 @@
 </header>
 
 <main>
+    <div class="container mx-auto">
     {{ $slot }}
+    </div>
 </main>
 
 <footer class="container mx-auto">
