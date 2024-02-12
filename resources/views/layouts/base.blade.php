@@ -132,7 +132,7 @@
                 @if(config('app.from_year') !== date('Y'))
                     — date('Y')
                 @endif
-                {{ config('app.name') }}.
+                {{ config('app.name') }}
             </p>
         </div>
         <div class="mr-auto flex items-center pt-5 sm:mr-0 sm:pt-0">

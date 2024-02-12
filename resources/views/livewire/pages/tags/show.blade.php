@@ -1,5 +1,5 @@
 <div>
-    <div class="pt-8 lg:pt-12">
+    <div class="pt-16 lg:pt-20">
         <x-articles :articles="$articles"/>
     </div>
 
