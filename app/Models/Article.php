@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,8 +13,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class Article extends Model implements Feedable
+class Article extends Model implements Feedable, Sitemapable
 {
     use HasFactory,
         SoftDeletes;
@@ -60,5 +63,13 @@ class Article extends Model implements Feedable
     public static function getFeedItems(): Collection
     {
         return Article::published()->latest('id')->limit(10)->get();
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        return Url::create(route('pages.items.show', $this))
+            ->setLastModificationDate(Carbon::create($this->updated_at))
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.9);
     }
 }
