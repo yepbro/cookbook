@@ -25,27 +25,27 @@ class SiteSettingService
         return $this->items->first(fn(SiteSetting $x) => $x->key === $key)?->value;
     }
 
-    public function getLogo(): string
+    public function getLogo(): ?string
     {
         return $this->get('logo');
     }
 
-    public function getHeadCode(): string
+    public function getHeadCode(): ?string
     {
         return $this->get('head');
     }
 
-    public function getFooterCode(): string
+    public function getFooterCode(): ?string
     {
         return $this->get('footer');
     }
 
-    public function getRobotsTxt(): string
+    public function getRobotsTxt(): ?string
     {
         return $this->get('robots.txt');
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->get('email');
     }

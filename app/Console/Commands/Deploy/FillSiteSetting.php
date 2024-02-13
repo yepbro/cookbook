@@ -25,31 +25,31 @@ class FillSiteSetting extends Command
             'name' => 'Код для добавления в head',
             'key' => 'head',
             'value' => null,
-            'description' => '',
+            'description' => null,
         ],
         [
             'name' => 'Код для добавления перед закрывающим тегом body',
             'key' => 'footer',
             'value' => null,
-            'description' => '',
+            'description' => null,
         ],
         [
             'name' => 'Robots.txt',
             'key' => 'robots.txt',
             'value' => null,
-            'description' => '',
+            'description' => null,
         ],
         [
             'name' => 'E-mail',
             'key' => 'email',
             'value' => null,
-            'description' => '',
+            'description' => null,
         ],
         [
             'name' => 'Логотип',
             'key' => 'logo',
             'value' => null,
-            'description' => '',
+            'description' => null,
         ],
     ];
 }

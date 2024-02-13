@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers;
 use App\Livewire\Pages;
 use App\Livewire\Pages\Articles;
 use App\Livewire\Pages\Tags;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/robots.txt', Controllers\RobotsTxtController::class);
 
 Route::get('/', Pages\Home::class)->name('pages.home');
 Route::get('/search', Pages\Search::class)->name('pages.search');
