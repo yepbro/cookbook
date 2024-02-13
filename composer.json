@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "meilisearch/meilisearch-php": "^1.5",
-        "moonshine/moonshine": "^2.7"
+        "moonshine/moonshine": "^2.7",
+        "spatie/laravel-feed": "^4.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -48,8 +49,7 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan lang:update"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

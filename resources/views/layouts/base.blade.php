@@ -22,6 +22,8 @@
         {{ config('app.name', 'Laravel') }}
     </title>
 
+    <x-feed-links/>
+
     <link crossorigin="anonymous" href="https://fonts.googleapis.com" rel="preconnect"/>
 
     <link
