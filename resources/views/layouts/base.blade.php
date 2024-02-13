@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\Services\SiteSettingService $settings
+ */
+?>
+@inject('settings', 'App\Services\SiteSettingService')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -29,6 +35,8 @@
         rel="stylesheet"
     />
 
+    {!! $settings->getHeadCode() !!}
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -44,7 +52,11 @@
     <div class="flex items-center justify-between py-6 lg:py-10">
         <a href="{{ route('pages.home') }}" class="flex items-center">
                 <span class="mr-2">
-                    <img src="/assets/img/logo.svg" alt="logo"/>
+                    @if($logo = $settings->getLogo())
+                        {!! $logo !!}
+                    @else
+                        <img src="/assets/img/logo.svg" alt="logo"/>
+                    @endif
                 </span>
             <p class="hidden font-body text-2xl font-bold text-primary lg:block">
                 {{ config('app.name') }}
@@ -131,7 +143,11 @@
     <div class="flex flex-col items-center justify-between border-t border-grey-lighter py-10 sm:flex-row sm:py-12">
         <div class="mr-auto flex flex-col items-center sm:flex-row">
             <a href="/" class="mr-auto sm:mr-6">
-                <img src="/assets/img/logo.svg" alt="logo"/>
+                @if($logo = $settings->getLogo())
+                    {!! $logo !!}
+                @else
+                    <img src="/assets/img/logo.svg" alt="logo"/>
+                @endif
             </a>
             <p class="pt-5 font-body font-light text-primary sm:pt-0">
                 ©{{ config('app.from_year') }}
@@ -153,6 +169,8 @@
         </div>
     </div>
 </footer>
+
+{!! $settings->getFooterCode() !!}
 
 @livewireScripts
 </body>
