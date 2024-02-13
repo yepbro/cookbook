@@ -36,7 +36,7 @@ class FillSiteSetting extends Command
         [
             'name' => 'Robots.txt',
             'key' => 'robots.txt',
-            'value' => null,
+            'value' => "User-agent: *\nDisallow: /",
             'description' => null,
         ],
         [
