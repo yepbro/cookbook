@@ -9,6 +9,6 @@ class SiteSettingSeeder extends Seeder
 {
     public function run(): void
     {
-        Artisan::call('deploy:fill-site-setting');
+        Artisan::call('deploy:fill-site-settings');
     }
 }
