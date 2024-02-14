@@ -5,9 +5,9 @@ namespace App\Console\Commands\Deploy;
 use App\Models\SiteSetting;
 use Illuminate\Console\Command;
 
-class FillSiteSetting extends Command
+class FillSiteSettings extends Command
 {
-    protected $signature = 'deploy:fill-site-setting';
+    protected $signature = 'deploy:fill-site-settings';
 
     protected $description = 'Добавить в базу стартовые данные для таблицы настроек сайта';
 
