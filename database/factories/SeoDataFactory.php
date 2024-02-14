@@ -17,8 +17,8 @@ class SeoDataFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->optional(0)->sentence(),
-            'header' => fake()->optional(0)->sentence(),
+            'title' => fake()->optional()->sentence(),
+            'header' => fake()->optional()->sentence(),
             'canonical' => null,
             'keywords' => implode(', ', Arr::wrap(fake()->optional()->words())),
             'description' => fake()->optional()->sentence(),
