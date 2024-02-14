@@ -15,6 +15,15 @@
 
         <div class="prose prose max-w-none border-b border-grey-lighter py-8 dark:prose-dark sm:py-12">
             {{ $article->content }}
+
+
+            <pre class="highlight">
+                        <code class="hljs language-javascript">
+const x = () => 5;
+                        </code>
+                    </pre>
+
+
         </div>
 
         <div class="flex items-center pt-16 lg:pt-20">

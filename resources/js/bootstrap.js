@@ -5,10 +5,20 @@
  */
 
 import axios from 'axios';
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import php from 'highlight.js/lib/languages/php';
+import css from 'highlight.js/lib/languages/css';
 
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('php', php);
+hljs.registerLanguage('css', css);
+
+window.hljs = hljs;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

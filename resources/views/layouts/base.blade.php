@@ -157,6 +157,7 @@
                 </p>
             </div>
         @endif
+
     </div>
 </main>
 
@@ -192,6 +193,15 @@
 </footer>
 
 {!! $settings->getFooterCode() !!}
+
+<script>
+    function ready() {
+        console.log(hljs)
+        hljs.highlightAll()
+    }
+
+    document.addEventListener("DOMContentLoaded", ready);
+</script>
 
 @livewireScripts
 </body>
