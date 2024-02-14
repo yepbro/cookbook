@@ -1,7 +1,6 @@
 <x-base-layout
     :header="$header ?? ''"
-    :desc="$desc ?? ''"
-    :title="$header ?? ''"
+    :seo="$seo"
 >
     {{ $slot }}
 </x-base-layout>

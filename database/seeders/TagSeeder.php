@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SeoData;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
@@ -9,6 +10,9 @@ class TagSeeder extends Seeder
 {
     public function run(): void
     {
-        Tag::factory()->count(10)->create();
+        Tag::factory()
+            ->count(10)
+            ->has(SeoData::factory(), 'seo')
+            ->create();
     }
 }

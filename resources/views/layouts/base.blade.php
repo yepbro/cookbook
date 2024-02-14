@@ -16,11 +16,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        @if($title ?? false)
+        @if($title = $seo->title ?: $header)
             {{ $title }} |
         @endif
         {{ config('app.name', 'Laravel') }}
     </title>
+
+    @if($seo->keywords)
+        <meta name="keywords" content="{{ $seo->keywords }}"/>
+    @endif
+
+    @if($seo->description)
+        <meta name="description" content="{{ $seo->description }}"/>
+    @endif
+
+    <meta name="robots"
+          content="{{ $seo->noindex ? 'noindex' : 'index' }},{{ $seo->nofollow ? 'nofollow' : 'follow' }}"/>
 
     <x-feed-links/>
 
@@ -123,21 +134,29 @@
 <main class="pb-16 lg:pb-20">
     <div class="container mx-auto">
 
-    @if($header ?? false)
+        @if($heading = $seo->header ?: $header)
             <h1 class="pt-5 font-body text-4xl font-semibold text-primary md:text-5xl lg:text-6xl">
-                {{ $header }}
+                {{ $heading }}
             </h1>
         @endif
 
-        @if($desc ?? false)
+        @if($textBefore = $seo->text_before ?: '')
             <div class="pt-3 sm:w-3/4">
                 <p class="font-body text-xl font-light text-primary">
-                    {{ $desc }}
+                    {{ $textBefore }}
                 </p>
             </div>
         @endif
 
         {{ $slot }}
+
+        @if($textAfter = $seo->text_after ?: '')
+            <div class="pt-3 sm:w-3/4">
+                <p class="font-body text-xl font-light text-primary">
+                    {{ $textAfter }}
+                </p>
+            </div>
+        @endif
     </div>
 </main>
 

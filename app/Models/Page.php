@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Sitemap\Contracts\Sitemapable;
 use Spatie\Sitemap\Tags\Url;
@@ -27,6 +28,11 @@ class Page extends Model implements Sitemapable
         'is_published' => 'boolean',
         'show_in_menu' => 'boolean',
     ];
+
+    public function seo(): MorphOne
+    {
+        return $this->morphOne(SeoData::class, 'seoable');
+    }
 
     public function scopePublished(Builder $query): void
     {

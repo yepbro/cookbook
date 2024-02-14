@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\SeoData;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
@@ -21,6 +22,7 @@ class ArticleSeeder extends Seeder
             ->state(new Sequence(
                 fn(Sequence $sequence) => ['author_id' => $authors->random()],
             ))
+            ->has(SeoData::factory(), 'seo')
             ->create()
             ->each(fn(Article $article) => $article->tags()->attach($tags->random(3)));
     }
