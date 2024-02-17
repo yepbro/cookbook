@@ -11,6 +11,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('telescope:prune')->hourly();
         $schedule->command('app:sitemap')->hourlyAt(15);
+        $schedule->command('browsershot:clear', [
+            '--some' => true,
+        ])->daily();
     }
 
     protected function commands(): void
