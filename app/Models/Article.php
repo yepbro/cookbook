@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\Sitemap\Contracts\Sitemapable;
@@ -20,6 +21,7 @@ use Spatie\Sitemap\Tags\Url;
 class Article extends Model implements Feedable, Sitemapable
 {
     use HasFactory,
+        Searchable,
         SoftDeletes;
 
     protected $fillable = [
@@ -77,5 +79,26 @@ class Article extends Model implements Feedable, Sitemapable
             ->setLastModificationDate(Carbon::create($this->updated_at))
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.9);
+    }
+
+    public function searchableAs(): string
+    {
+        return config('app.prefix').'_articles_index';
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'heading' => $this->heading,
+            'content' => $this->slug,
+            'created_at' => $this->created_at->getTimestamp(),
+            'tags' => $this->tags->pluck('id')->toArray(),
+        ];
+    }
+
+    public function shouldBeSearchable(): bool
+    {
+        return $this->is_published;
     }
 }

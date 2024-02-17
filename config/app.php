@@ -13,6 +13,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'prefix' => env('APP_PREFIX'),
+
     'asset_url' => env('ASSET_URL'),
 
     'timezone' => 'UTC',

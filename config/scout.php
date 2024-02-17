@@ -41,7 +41,10 @@ return [
     |
     */
 
-    'queue' => env('SCOUT_QUEUE', false),
+    'queue' => [
+        'connection' => 'redis',
+        'queue' => 'scout',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -133,9 +136,12 @@ return [
         'host' => env('MEILISEARCH_HOST', 'http://localhost:7700'),
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
-            // 'users' => [
-            //     'filterableAttributes'=> ['id', 'name', 'email'],
-            // ],
+            \App\Models\Article::class => [
+                'displayedAttributes' => ['id', 'heading', 'content'],
+                'searchableAttributes' => ['heading', 'content'],
+                'filterableAttributes' => ['id', 'tags'],
+                'sortableAttributes' => ['created_at'],
+            ],
         ],
     ],
 
