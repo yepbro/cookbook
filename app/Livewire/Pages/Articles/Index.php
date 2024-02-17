@@ -30,7 +30,7 @@ class Index extends Component
             'articles' => Article::with('tags')->published()->paginate(10),
         ])->layoutData([
             'header' => 'Все рецепты',
-            'seo' => $this->seo,
+            'seo' => $this->seo ?? null,
         ]);
     }
 }

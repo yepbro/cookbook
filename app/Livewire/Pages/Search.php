@@ -18,7 +18,7 @@ class Search extends Component
 {
     use WithPagination;
 
-    protected SeoData $seo;
+    public SeoData $seo;
 
     public $search = '';
 
@@ -41,10 +41,10 @@ class Search extends Component
         return view('livewire.pages.search', [
             'articles' => Article::search($this->search)
                 ->query(fn (Builder $query) => $query->with('tags'))
-                ->paginate(2),
+                ->paginate(10),
         ])->layoutData([
             'header' => 'Результаты поиска',
-            'seo' => $this->seo,
+            'seo' => $this->seo ?? null,
         ]);
     }
 }

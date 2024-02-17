@@ -20,7 +20,7 @@ class Index extends Component
      */
     public Collection $tags;
 
-    protected SeoData $seo;
+    public SeoData $seo;
 
     public function mount(): void
     {
@@ -37,7 +37,7 @@ class Index extends Component
         return view('livewire.pages.tags.index')
             ->layoutData([
                 'header' => 'Все теги',
-                'seo' => $this->seo,
+                'seo' => $this->seo ?? null,
             ]);
     }
 }
