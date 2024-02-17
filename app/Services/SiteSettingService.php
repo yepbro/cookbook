@@ -12,9 +12,6 @@ class SiteSettingService
      */
     protected Collection $items;
 
-    /**
-     * @param Collection $items
-     */
     public function __construct(Collection $items)
     {
         $this->items = $items;

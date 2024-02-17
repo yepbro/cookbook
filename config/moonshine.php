@@ -40,12 +40,12 @@ return [
     'cache' => 'file',
 
     'forms' => [
-        'login' => LoginForm::class
+        'login' => LoginForm::class,
     ],
 
     'pages' => [
         'dashboard' => App\MoonShine\Pages\Dashboard::class,
-        'profile' => ProfilePage::class
+        'profile' => ProfilePage::class,
     ],
 
     'model_resources' => [

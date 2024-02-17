@@ -13,7 +13,7 @@ return [
              */
             'items' => [
                 \App\Models\Article::class,
-                'getFeedItems'
+                'getFeedItems',
             ],
 
             /*

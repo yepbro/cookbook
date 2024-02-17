@@ -19,6 +19,7 @@ class Search extends Component
     {
         $this->seo = SystemPage::slug(SystemPageEnum::SEARCH)->first()->seo()->firstOrNew();
     }
+
     public function render(): View|Application|Factory|CApplication
     {
         return view('livewire.pages.search')->layoutData([

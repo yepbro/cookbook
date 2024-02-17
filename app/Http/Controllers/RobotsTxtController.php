@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Cache;
 
 class RobotsTxtController extends Controller
 {
-
     public function __invoke(Request $request, SiteSettingService $settings)
     {
         // TODO: сделать сброс кеша при обновление этого поля в админке

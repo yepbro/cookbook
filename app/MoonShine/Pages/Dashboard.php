@@ -11,7 +11,7 @@ class Dashboard extends Page
     public function breadcrumbs(): array
     {
         return [
-            '#' => $this->title()
+            '#' => $this->title(),
         ];
     }
 
