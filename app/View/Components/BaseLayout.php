@@ -20,8 +20,7 @@ class BaseLayout extends Component
     public function __construct(
         public string $header = '',
         public ?SeoData $seo = null,
-    )
-    {
+    ) {
         if ($seo === null) {
             $this->seo = new SeoData;
         }

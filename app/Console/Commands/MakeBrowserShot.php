@@ -27,7 +27,7 @@ class MakeBrowserShot extends Command
 
         $ext = 'png';
 
-        $filepath = Storage::disk('browsershots')->path(md5($path) . '.' . $ext);
+        $filepath = Storage::disk('browsershots')->path(md5($path).'.'.$ext);
 
         Browsershot::url($url)
             ->setExtraHttpHeaders([

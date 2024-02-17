@@ -11,7 +11,7 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(SiteSettingService::class, fn() => new SiteSettingService(SiteSetting::all()));
+        $this->app->singleton(SiteSettingService::class, fn () => new SiteSettingService(SiteSetting::all()));
     }
 
     public function boot(): void

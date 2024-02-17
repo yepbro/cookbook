@@ -39,7 +39,7 @@ return [
         'browsershots' => [
             'driver' => 'local',
             'root' => storage_path('app/public/browsershots'),
-            'url' => env('APP_URL') . '/storage/browsershots',
+            'url' => env('APP_URL').'/storage/browsershots',
             'visibility' => 'public',
             'throw' => false,
         ],

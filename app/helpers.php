@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
-if (!function_exists('og_image')) {
+if (! function_exists('og_image')) {
     /**
      * Получить ссылку на изображение для OpenGraph,
      * если его нет, то сгенерировать
@@ -16,12 +16,12 @@ if (!function_exists('og_image')) {
 
         $ext = 'png';
 
-        $filename = md5($path) . '.' . $ext;
+        $filename = md5($path).'.'.$ext;
 
         $filepath = Storage::disk('browsershots')->path($filename);
 
         Log::debug('X-Browser-Shot', Arr::wrap($browserShot));
-        if (!file_exists($filepath) && $browserShot !== 'yes') {
+        if (! file_exists($filepath) && $browserShot !== 'yes') {
             Artisan::queue('browsershot:make', [
                 'url' => $url,
             ])->onQueue('commands');

@@ -31,7 +31,7 @@ class Show extends Component
         return view('livewire.pages.tags.show', [
             'articles' => $this->tag->articles()->with('tags')->published()->paginate(10),
         ])->layoutData([
-            'header' => 'Тег ' . $this->tag->name,
+            'header' => 'Тег '.$this->tag->name,
             'seo' => $this->seo,
         ]);
     }

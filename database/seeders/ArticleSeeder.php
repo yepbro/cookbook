@@ -20,10 +20,10 @@ class ArticleSeeder extends Seeder
         Article::factory()
             ->count(50)
             ->state(new Sequence(
-                fn(Sequence $sequence) => ['author_id' => $authors->random()],
+                fn (Sequence $sequence) => ['author_id' => $authors->random()],
             ))
             ->has(SeoData::factory(), 'seo')
             ->create()
-            ->each(fn(Article $article) => $article->tags()->attach($tags->random(3)));
+            ->each(fn (Article $article) => $article->tags()->attach($tags->random(3)));
     }
 }

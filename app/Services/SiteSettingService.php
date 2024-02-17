@@ -19,7 +19,7 @@ class SiteSettingService
 
     public function get(string $key): string|int|float|bool|null
     {
-        return $this->items->first(fn(SiteSetting $x) => $x->key === $key)?->value;
+        return $this->items->first(fn (SiteSetting $x) => $x->key === $key)?->value;
     }
 
     public function getLogo(): ?string
