@@ -12,6 +12,19 @@
 - Meilisearch
 - Atlas, a free Tailwind CSS personal blog template
 
+### Первое развертывание
+
+- `git clone git@github.com:yepbro/cookbook.git ./`
+- `cp .env.example .env`
+- Изменить `APP_PREFIX` в `.env`
+- `sail up`
+- `sail composer install`
+- `sail npm install`
+- `sail artisan key:generate`
+- `sail artisan storage:link`
+- `sail artisan maigrate:fresh --seed`
+- `sail artisan horizon`
+
 ##### INSTALLING PUPPETEER ON A FORGE PROVISIONED SERVER
 
 Ubuntu 22
