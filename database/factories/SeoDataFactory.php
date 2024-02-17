@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\MetaTag;
 use App\Models\SeoData;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
@@ -35,6 +36,15 @@ class SeoDataFactory extends Factory
             'og_description' => fake()->optional()->sentence(),
             'og_site_name' => fake()->optional()->city(),
         ];
+    }
+
+    public function configure(): static
+    {
+        return $this->afterCreating(function (SeoData $seoData) {
+            MetaTag::factory()->count(3)->create([
+                'seo_data_id' => $seoData->id,
+            ]);
+        });
     }
 
     public function article(): static

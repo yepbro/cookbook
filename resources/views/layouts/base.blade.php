@@ -52,6 +52,12 @@
         <meta property="og:site_name" content="{{ $seo->og_site_name ?: config('app.name', 'Laravel') }}"/>
     @endif
 
+    @foreach($seo->metaTags as $metaTag)
+        @if($metaTag->content)
+            <meta {{ $metaTag->type->value }}="{{ $metaTag->name }}" content="{{ $metaTag->content }}"/>
+        @endif
+    @endforeach
+
     <x-feed-links/>
 
     <link crossorigin="anonymous" href="https://fonts.googleapis.com" rel="preconnect"/>

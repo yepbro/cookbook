@@ -4,11 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class SeoData extends Model
 {
     use HasFactory;
+
+    protected $table = 'seo_data';
+
+    protected $with = [
+        'metaTags',
+    ];
 
     protected $fillable = [
         'title',
@@ -38,5 +45,10 @@ class SeoData extends Model
     public function seoable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function metaTags(): HasMany
+    {
+        return $this->hasMany(MetaTag::class);
     }
 }
