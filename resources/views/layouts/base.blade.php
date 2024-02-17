@@ -38,7 +38,10 @@
 
         <meta property="og:type" content="{{ $seo->og_type ?: 'website' }}"/>
 
-        <meta property="og:image" content="{{ $seo->og_image }}"/>
+        <meta property="og:image"
+              content="{{ $seo->og_image ?: og_image(Route::getCurrentRequest()->fullUrl(), Route::getCurrentRequest()->header('X-Browser-Shot')) }}"/>
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="630"/>
 
         <meta property="og:url" content="{{ $seo->og_url ?: Route::getCurrentRequest()->fullUrl() }}"/>
 

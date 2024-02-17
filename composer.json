@@ -19,6 +19,8 @@
         "livewire/livewire": "^3.0",
         "meilisearch/meilisearch-php": "^1.5",
         "moonshine/moonshine": "^2.7",
+        "spatie/browsershot": "^4.0",
+        "spatie/image": "^3.3",
         "spatie/laravel-feed": "^4.3",
         "spatie/laravel-sitemap": "^7.1"
     },
@@ -37,7 +39,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
