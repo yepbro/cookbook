@@ -20,11 +20,19 @@ class SeoData extends Model
         'nofollow',
         'text_before',
         'text_after',
+        'og_off',
+        'og_title',
+        'og_type',
+        'og_url',
+        'og_image',
+        'og_description',
+        'og_site_name',
     ];
 
     protected $casts = [
         'noindex' => 'boolean',
         'nofollow' => 'boolean',
+        'og_off' => 'boolean',
     ];
 
     public function seoable(): MorphTo

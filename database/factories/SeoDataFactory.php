@@ -26,6 +26,32 @@ class SeoDataFactory extends Factory
             'nofollow' => fake()->boolean(),
             'text_before' => fake()->optional()->sentence(),
             'text_after' => fake()->optional()->sentence(),
+
+            'og_off' => fake()->boolean(),
+            'og_title' => fake()->optional()->sentence(),
+            'og_type' => null,
+            'og_url' => fake()->optional()->url(),
+            'og_image' => fake()->optional()->imageUrl(),
+            'og_description' => fake()->optional()->sentence(),
+            'og_site_name' => fake()->optional()->city(),
         ];
+    }
+
+    public function article(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'og_type' => 'article',
+            ];
+        });
+    }
+
+    public function website(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'og_type' => 'website',
+            ];
+        });
     }
 }

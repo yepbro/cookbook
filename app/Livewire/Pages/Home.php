@@ -24,7 +24,7 @@ class Home extends Component
     {
         return view('livewire.pages.home')
             ->layoutData([
-                'header' => '',
+                'header' => 'Главная страница',
                 'seo' => $this->seo,
             ]);
     }

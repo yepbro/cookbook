@@ -5,7 +5,7 @@
 ?>
 @inject('settings', 'App\Services\SiteSettingService')
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" @if(!$seo->og_off) prefix="og: //ogp.me/ns#" @endif>
 <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
@@ -32,6 +32,22 @@
 
     <meta name="robots"
           content="{{ $seo->noindex ? 'noindex' : 'index' }},{{ $seo->nofollow ? 'nofollow' : 'follow' }}"/>
+
+    @if (!$seo->og_off)
+        <meta property="og:title" content="{{ $seo->og_title ?: $seo->title ?: $header }}"/>
+
+        <meta property="og:type" content="{{ $seo->og_type ?: 'website' }}"/>
+
+        <meta property="og:image" content="{{ $seo->og_image }}"/>
+
+        <meta property="og:url" content="{{ $seo->og_url ?: Route::getCurrentRequest()->fullUrl() }}"/>
+
+        @if($seo->og_description || $seo->description)
+            <meta property="og:description" content="{{ $seo->og_description ?: $seo->description }}"/>
+        @endif
+
+        <meta property="og:site_name" content="{{ $seo->og_site_name ?: config('app.name', 'Laravel') }}"/>
+    @endif
 
     <x-feed-links/>
 
@@ -196,7 +212,6 @@
 
 <script>
     function ready() {
-        console.log(hljs)
         hljs.highlightAll()
     }
 
