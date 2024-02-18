@@ -40,6 +40,8 @@ class MakeBrowserShot extends Command
             ->newHeadless()
             ->save($filepath);
 
-        Log::info(sprintf('MakeBrowserShot: %ss', time() - $start));
+        if (time() - $start > 5) {
+            Log::warning(sprintf('MakeBrowserShot: %ss', time() - $start));
+        }
     }
 }
