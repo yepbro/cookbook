@@ -17,6 +17,9 @@ export default {
         {
             pattern: /bg-[a-z0-9]+-200/,
         },
+        {
+            pattern: /bg-[a-z\-]+/,
+        },
     ],
 
     theme: {
