@@ -51,5 +51,11 @@ class FillSiteSettings extends Command
             'value' => null,
             'description' => null,
         ],
+        [
+            'name' => 'Текст о проекте на главной',
+            'key' => 'main_about',
+            'value' => null,
+            'description' => null,
+        ],
     ];
 }

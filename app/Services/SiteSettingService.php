@@ -46,4 +46,9 @@ class SiteSettingService
     {
         return $this->get('email');
     }
+
+    public function getMainAbout(): ?string
+    {
+        return $this->get('main_about');
+    }
 }
