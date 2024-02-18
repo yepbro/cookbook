@@ -6,6 +6,7 @@ use App\Enums\SystemPage as SystemPageEnum;
 use App\Models\Article;
 use App\Models\SeoData;
 use App\Models\SystemPage;
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application as CApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -45,6 +46,7 @@ class Search extends Component
     public function render(): View|Application|Factory|CApplication
     {
         return view('livewire.pages.search', [
+            'tags' => $this->tagId ? Tag::whereIn('id', Arr::wrap($this->tagId))->get() : collect(),
             'articles' => Article::search($this->search)
                 ->when($this->tagId, fn (Builder $query) => $query->whereIn('tags', Arr::wrap($this->tagId)))
                 ->paginate(10),
