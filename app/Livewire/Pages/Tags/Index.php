@@ -37,7 +37,7 @@ class Index extends Component
         return view('livewire.pages.tags.index')
             ->layoutData([
                 'header' => 'Все теги',
-                'seo' => $this->seo ?? null,
+                'seo' => $this->seo,
             ]);
     }
 }

@@ -32,7 +32,7 @@ class Show extends Component
             'articles' => $this->tag->articles()->with('tags')->published()->paginate(10),
         ])->layoutData([
             'header' => 'Тег '.$this->tag->name,
-            'seo' => $this->seo,
+            'seo' => $this->seo ?? null,
         ]);
     }
 }
