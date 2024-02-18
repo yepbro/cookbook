@@ -24,7 +24,7 @@ const x = () => 5;
                     </pre>
         </div>
 
-        @if($articles->isNotEmpty())
+        @if($moreArticles->isNotEmpty())
             <div class="py-16 lg:py-20">
                 <div class="flex items-center pb-6">
                     <img src="/assets/img/icon-story.png" alt="icon story"/>
@@ -46,7 +46,7 @@ const x = () => 5;
                     </a>
                 </div>
                 <div class="pt-8">
-                    <x-articles :articles="$articles"/>
+                    <x-articles :articles="$moreArticles"/>
                 </div>
             </div>
         @endif

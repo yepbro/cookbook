@@ -21,7 +21,7 @@ class Show extends Component
     /**
      * @var Collection<int, Article>
      */
-    public Collection $articles;
+    public Collection $moreArticles;
 
     public function mount(Article $article): void
     {
@@ -31,10 +31,11 @@ class Show extends Component
 
         $this->seo = $this->article->seo()->firstOrNew();
 
-        $this->articles = Article::query()
+        $this->moreArticles = Article::query()
             ->whereHas('tags', fn (Builder $query) => $query->whereIn('tags.id', $this->article->tags->pluck('id')->toArray()))
-            ->take(5)
+            ->published()
             ->inRandomOrder()
+            ->limit(5)
             ->get();
 
         $this->article->visit()->increment();
