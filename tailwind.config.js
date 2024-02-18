@@ -54,7 +54,7 @@ export default {
             zinc: colors.zinc,
             neutral: colors.neutral,
             stone: colors.stone,
-            red2: colors.red,
+            red: colors.red,
             orange: colors.orange,
             amber: colors.amber,
             yellow2: colors.yellow, // double
