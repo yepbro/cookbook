@@ -9,8 +9,9 @@ use App\Models\SystemPage;
 use Illuminate\Contracts\Foundation\Application as CApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Arr;
+use Laravel\Scout\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,6 +22,8 @@ class Search extends Component
     public SeoData $seo;
 
     public $search = '';
+
+    public $tagId = '';
 
     public function mount(): void
     {
@@ -33,6 +36,9 @@ class Search extends Component
             'search' => [
                 'as' => 'q',
             ],
+            'tagId' => [
+                'as' => 'tag',
+            ],
         ];
     }
 
@@ -40,7 +46,7 @@ class Search extends Component
     {
         return view('livewire.pages.search', [
             'articles' => Article::search($this->search)
-                ->query(fn (Builder $query) => $query->with('tags'))
+                ->when($this->tagId, fn (Builder $query) => $query->whereIn('tags', Arr::wrap($this->tagId)))
                 ->paginate(10),
         ])->layoutData([
             'header' => 'Результаты поиска',

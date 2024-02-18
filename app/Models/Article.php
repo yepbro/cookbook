@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use Spatie\Feed\Feedable;
@@ -30,6 +31,10 @@ class Article extends Model implements Feedable, Sitemapable
         'slug',
         'content',
         'is_published',
+    ];
+
+    protected $with = [
+        'tags',
     ];
 
     protected $casts = [
@@ -88,13 +93,22 @@ class Article extends Model implements Feedable, Sitemapable
 
     public function toSearchableArray(): array
     {
-        return [
+        $data = [
             'id' => $this->id,
             'heading' => $this->heading,
-            'content' => $this->slug,
+            'content' => $this->content,
             'created_at' => $this->created_at->getTimestamp(),
             'tags' => $this->tags->pluck('id')->toArray(),
         ];
+
+        Log::debug('toSearchableArray', $data);
+
+        return $data;
+    }
+
+    protected function makeAllSearchableUsing(Builder $query): Builder
+    {
+        return $query->with('tags');
     }
 
     public function shouldBeSearchable(): bool

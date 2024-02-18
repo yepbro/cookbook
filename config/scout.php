@@ -137,7 +137,7 @@ return [
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
             \App\Models\Article::class => [
-                'displayedAttributes' => ['id', 'heading', 'content'],
+                'displayedAttributes' => ['id', 'heading', 'content', 'tags'],
                 'searchableAttributes' => ['heading', 'content'],
                 'filterableAttributes' => ['id', 'tags'],
                 'sortableAttributes' => ['created_at'],

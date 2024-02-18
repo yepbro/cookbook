@@ -17,13 +17,15 @@ class ArticleSeeder extends Seeder
 
         $tags = Tag::all();
 
-        Article::factory()
-            ->count(50)
-            ->state(new Sequence(
-                fn (Sequence $sequence) => ['author_id' => $authors->random()],
-            ))
-            ->has(SeoData::factory(), 'seo')
-            ->create()
-            ->each(fn (Article $article) => $article->tags()->attach($tags->random(3)));
+        Article::withoutSyncingToSearch(static function () use ($authors, $tags) {
+            Article::factory()
+                ->count(50)
+                ->state(new Sequence(
+                    fn (Sequence $sequence) => ['author_id' => $authors->random()],
+                ))
+                ->has(SeoData::factory(), 'seo')
+                ->create()
+                ->each(fn (Article $article) => $article->tags()->attach($tags->random(3)));
+        });
     }
 }

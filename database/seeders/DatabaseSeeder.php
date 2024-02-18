@@ -31,5 +31,9 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
             ArticleSeeder::class,
         ]);
+
+        Artisan::call('scout:import', [
+            'model' => Article::class,
+        ]);
     }
 }
