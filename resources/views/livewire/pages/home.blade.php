@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        @if($articles->isNotEmpty())
+        @if($lastArticles->isNotEmpty())
             <div class="py-16 lg:py-20">
                 <div class="flex items-center pb-6">
                     <img src="/assets/img/icon-story.png" alt="icon story"/>
@@ -36,7 +36,34 @@
                     </a>
                 </div>
                 <div class="pt-8">
-                    <x-articles :articles="$articles"/>
+                    <x-articles :articles="$lastArticles"/>
+                </div>
+            </div>
+        @endif
+
+        @if($topArticles->isNotEmpty())
+            <div class="py-16 lg:py-20">
+                <div class="flex items-center pb-6">
+                    <img src="/assets/img/icon-story.png" alt="icon story"/>
+                    <h3
+                        class="ml-3 font-body text-2xl font-semibold text-primary dark:text-white"
+                    >
+                        Самое популярное за последнюю неделю
+                    </h3>
+                    <a
+                        href="{{ route('pages.items.index') }}"
+                        class="flex items-center pl-10 font-body italic text-green transition-colors hover:text-secondary dark:text-green-light dark:hover:text-secondary"
+                    >
+                        Все рецепты
+                        <img
+                            src="/assets/img/long-arrow-right.png"
+                            class="ml-3"
+                            alt="arrow right"
+                        />
+                    </a>
+                </div>
+                <div class="pt-8">
+                    <x-articles :articles="$topArticles"/>
                 </div>
             </div>
         @endif

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Awssat\Visits\Visits;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -114,5 +115,10 @@ class Article extends Model implements Feedable, Sitemapable
     public function shouldBeSearchable(): bool
     {
         return $this->is_published;
+    }
+
+    public function visit(): Visits
+    {
+        return visits($this);
     }
 }

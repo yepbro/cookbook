@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Collection as SCollection;
 use Livewire\Component;
 
 class Home extends Component
@@ -19,15 +20,22 @@ class Home extends Component
     protected SeoData $seo;
 
     /**
+     * @var SCollection<int, Article>
+     */
+    public SCollection $topArticles;
+
+    /**
      * @var Collection<int, Article>
      */
-    public Collection $articles;
+    public Collection $lastArticles;
 
     public function mount(): void
     {
         $this->seo = SystemPage::slug(SystemPageEnum::HOME)->first()->seo()->firstOrNew();
 
-        $this->articles = Article::published()->latest('id')->limit(5)->get();
+        $this->lastArticles = Article::published()->latest('id')->limit(5)->get();
+
+        $this->topArticles = visits(Article::class)->top(10);
     }
 
     public function render(SiteSettingService $service): View|Application|Factory|CApplication

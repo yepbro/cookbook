@@ -36,6 +36,8 @@ class Show extends Component
             ->take(5)
             ->inRandomOrder()
             ->get();
+
+        $this->article->visit()->increment();
     }
 
     public function render(): View|Application|Factory|CApplication
