@@ -154,6 +154,20 @@
             </ul>
         </div>
     </div>
+    <div>
+        <form action="{{ route('pages.search') }}" class="flex align-center justify-center">
+            <select name="tag" class="search mr-2 w-2/5 focus:border-slate-100" title="Теги">
+                <option value="">Все теги</option>
+                @foreach($tags as $id => $name)
+                    <option value="{{ $id }}">{{ $name }}</option>
+                @endforeach
+            </select>
+            <input type="search" name="q" class="search w-3/5 focus:border-slate-100" title="Поиск"/>
+            <button class="btn-search">
+                <box-icon name="search"></box-icon>
+            </button>
+        </form>
+    </div>
 </header>
 
 <main class="pb-16 lg:pb-20">

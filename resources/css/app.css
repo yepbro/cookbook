@@ -16,6 +16,14 @@ body {
     display: none;
 }
 
+.search {
+    @apply rounded border-slate-400 outline-0 text-sm text-slate-700;
+}
+
+.btn-search {
+    @apply ml-1 text-sm fill-slate-500;
+}
+
 .footer-menu {
     display: grid;
     @apply grid-cols-2;
