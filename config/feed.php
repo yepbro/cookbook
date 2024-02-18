@@ -3,6 +3,9 @@
 return [
     'feeds' => [
         'main' => [
+            'name' => env('APP_FEED_NAME', 'admin'),
+            'email' => env('APP_FEED_EMAIL', ''),
+
             /*
              * Here you can specify which class and method will return
              * the items that should appear in the feed. For example:
@@ -21,8 +24,8 @@ return [
              */
             'url' => '/rss',
 
-            'title' => env('APP_NAME', 'Cookbook'),
-            'description' => 'Узнай как решить проблему в своем коде. Краткие и эффективные рецепты.',
+            'title' => env('APP_FEED_TITLE', 'Cookbook'),
+            'description' => env('APP_FEED_DESCRIPTION', 'Узнай как решить проблему в своем коде. Краткие и эффективные рецепты.'),
             'language' => 'ru-RU',
 
             /*

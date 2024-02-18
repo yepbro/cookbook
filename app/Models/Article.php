@@ -69,8 +69,8 @@ class Article extends Model implements Feedable, Sitemapable
             ->summary(Str::of($this->content)->stripTags()->limit(300))
             ->updated($this->updated_at)
             ->link(route('pages.items.show', $this))
-            ->authorName('Denis')
-            ->authorEmail('denis@yepbro.ru');
+            ->authorName(config('feed.feeds.main.name'))
+            ->authorEmail(config('feed.feeds.main.email'));
     }
 
     public static function getFeedItems(): Collection
