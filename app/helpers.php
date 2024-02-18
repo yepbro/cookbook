@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 if (! function_exists('og_image')) {
@@ -20,7 +18,6 @@ if (! function_exists('og_image')) {
 
         $filepath = Storage::disk('browsershots')->path($filename);
 
-        Log::debug('X-Browser-Shot', Arr::wrap($browserShot));
         if (! file_exists($filepath) && $browserShot !== 'yes') {
             Artisan::queue('browsershot:make', [
                 'url' => $url,
