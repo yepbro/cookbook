@@ -58,7 +58,8 @@
                                         dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.after"
                                         class="group flex cursor-pointer items-center border-2 border-primary px-3 py-1 font-body font-medium text-primary transition-colors hover:border-secondary hover:text-secondary"
                                         aria-label="{{ __('pagination.previous') }}">
-                                    <i class="bx bx-left-arrow-alt mr-1 text-primary transition-colors group-hover:text-secondary"></i>
+                                    <box-icon name="left-arrow-alt"
+                                              class="mr-1 text-primary transition-colors group-hover:fill-secondary"></box-icon>
                                     Prev
                                 </button>
                             @endif
@@ -105,7 +106,8 @@
                                         dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.after"
                                         class="group ml-3 flex cursor-pointer items-center border-2 border-primary px-3 py-1 font-body font-medium text-primary transition-colors hover:border-secondary hover:text-secondary"
                                         aria-label="{{ __('pagination.next') }}">Next
-<i class="bx bx-right-arrow-alt ml-1 text-primary transition-colors group-hover:text-secondary"></i>
+                                    <box-icon name="right-arrow-alt"
+                                              class="ml-1 text-primary transition-colors group-hover:fill-secondary"></box-icon>
                                 </button>
                             @endif
                         </span>
