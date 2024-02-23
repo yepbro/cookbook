@@ -83,12 +83,12 @@
 </head>
 <body
     x-data="{isMobileMenuOpen: false}"
-    :class="isMobileMenuOpen ? 'max-h-screen overflow-hidden relative' : ''"
+    :class="isMobileMenuOpen ? 'max-h-screen overflow-x-hidden overflow-y-scroll relative' : ''"
 >
 
 <header class="container mx-auto">
     <div class="flex items-center justify-between py-6 lg:py-10">
-        <a href="{{ route('pages.home') }}" class="flex items-center">
+        <a href="{{ route('pages.home') }}" class="flex items-center no-underline">
                 <span class="mr-2">
                     @if($logo = $settings->getLogo())
                         {!! $logo !!}
@@ -101,12 +101,6 @@
             </p>
         </a>
         <div class="flex items-center lg:hidden">
-            <i
-                class="bx mr-8 cursor-pointer text-3xl text-primary"
-                @click="themeSwitch()"
-                :class="isDarkMode ? 'bxs-sun' : 'bxs-moon'"
-            ></i>
-
             <svg
                 width="24"
                 height="15"
@@ -132,7 +126,7 @@
                         href="{{ route('pages.tags.index') }}"
                         @class([
     'active' => Route::is('pages.tags.index'),
-    'relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green',
+    'relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green  no-underline',
 ])
                     >Все теги</a
                     >
@@ -146,12 +140,51 @@
                         href="{{ route('pages.items.index') }}"
                         @class([
     'active' => Route::is('pages.items.index'),
-    'relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green',
+    'relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green  no-underline',
 ])
                     >Все рецепты</a
                     >
                 </li>
             </ul>
+        </div>
+
+        <div
+            class="pointer-events-none fixed inset-0 z-50 flex bg-black bg-opacity-80 opacity-0 transition-opacity lg:hidden"
+            :class="isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''"
+        >
+            <div class="ml-auto w-2/3 bg-green p-4 md:w-1/3">
+                <box-icon class="absolute top-0 right-0 mt-4 mr-4 text-4xl text-white"
+                          name="x" @click="isMobileMenuOpen = false"></box-icon>
+                <ul class="mt-8 flex flex-col">
+
+                    <li class="">
+                        <a
+                            href="{{ route('pages.tags.index') }}"
+                            class="mb-3 block px-2 font-body text-lg font-medium text-white visited:text-white hover:text-secondary"
+                        >Все теги</a
+                        >
+                    </li>
+
+                    <li class="">
+                        <a
+                            href="{{ route('pages.items.index') }}"
+                            class="mb-3 block px-2 font-body text-lg font-medium text-white visited:text-white hover:text-secondary"
+                        >Все рецепты</a
+                        >
+                    </li>
+
+                    @foreach($footerLinks as $link)
+                        <li class="">
+                            <a
+                                href="{{ route('pages.pages.show', $link) }}"
+                                class="mb-3 block px-2 font-body text-lg font-medium text-white visited:text-white hover:text-secondary"
+                            >{{ $link->name }}</a
+                            >
+                        </li>
+                    @endforeach
+
+                </ul>
+            </div>
         </div>
     </div>
     <div>
