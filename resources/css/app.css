@@ -34,16 +34,16 @@ a.active {
     border-bottom: 1px solid #000;
 }
 
-a.link {
-    @apply text-blue2-500 underline;
+a.link, a {
+    @apply text-green underline;
 }
 
-a.link:hover {
-    @apply text-blue2-700;
+a.link:visited, a:visited {
+    @apply text-gray-400;
 }
 
-a.link:visited {
-    @apply text-violet-500;
+a.link:hover, a:hover {
+    @apply text-secondary;
 }
 
 .container {
