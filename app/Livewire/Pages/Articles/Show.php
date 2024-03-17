@@ -38,7 +38,8 @@ class Show extends Component
             ->limit(5)
             ->get();
 
-        $this->article->visit()->increment();
+        // TODO: visits package
+        //$this->article->visit()->increment();
     }
 
     public function render(): View|Application|Factory|CApplication

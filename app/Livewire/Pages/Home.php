@@ -35,7 +35,8 @@ class Home extends Component
 
         $this->lastArticles = Article::published()->latest('id')->limit(5)->get();
 
-        $this->topArticles = visits(Article::class)->top(10, constraints: [['is_published', '=', 1]]);
+        // TODO: visits package
+        $this->topArticles = collect(); //visits(Article::class)->top(10, constraints: [['is_published', '=', 1]]);
     }
 
     public function render(SiteSettingService $service): View|Application|Factory|CApplication

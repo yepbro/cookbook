@@ -117,8 +117,9 @@ class Article extends Model implements Feedable, Sitemapable
         return $this->is_published;
     }
 
-    public function visit(): Visits
-    {
-        return visits($this);
-    }
+    // TODO: visits package
+//    public function visit(): Visits
+//    {
+//        return visits($this);
+//    }
 }
