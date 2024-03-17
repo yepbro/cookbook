@@ -1,11 +1,11 @@
 <?php
 
+use App\MoonShine\MoonShineLayout;
 use MoonShine\Exceptions\MoonShineNotFoundException;
 use MoonShine\Forms\LoginForm;
 use MoonShine\Http\Middleware\Authenticate;
 use MoonShine\Http\Middleware\SecurityHeadersMiddleware;
 use MoonShine\Models\MoonshineUser;
-use MoonShine\MoonShineLayout;
 use MoonShine\Pages\ProfilePage;
 
 return [
@@ -37,7 +37,7 @@ return [
 
     'disk_options' => [],
 
-    'cache' => 'file',
+    'cache' => 'array',
 
     'forms' => [
         'login' => LoginForm::class,
@@ -78,7 +78,6 @@ return [
         'pipelines' => [],
     ],
     'locales' => [
-        'en',
         'ru',
     ],
 

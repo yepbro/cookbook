@@ -34,10 +34,9 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     static fn () => __('moonshine::ui.resource.role_title'),
                     new MoonShineUserRoleResource()
                 ),
-            ]),
+            ])
+                ->icon('heroicons.cog-8-tooth'),
 
-            MenuItem::make('Documentation', 'https://moonshine-laravel.com')
-                ->badge(fn () => 'Check'),
         ];
     }
 
