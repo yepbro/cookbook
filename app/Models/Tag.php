@@ -19,12 +19,12 @@ class Tag extends Model implements Sitemapable
     protected $fillable = [
         'name',
         'slug',
-        'class',
+        'color',
     ];
 
-    public function getClass(): string
+    public function getColor(): string
     {
-        return $this->class ?: 'bg-green-light';
+        return $this->color ?: '#cceeec';
     }
 
     public function articles(): BelongsToMany

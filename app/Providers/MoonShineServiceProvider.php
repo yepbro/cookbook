@@ -8,6 +8,7 @@ use App\MoonShine\Resources\ArticleResource;
 use App\MoonShine\Resources\PageResource;
 use App\MoonShine\Resources\TagResource;
 use App\MoonShine\Resources\UserResource;
+use Illuminate\Support\Facades\Vite;
 use MoonShine\Menu\MenuGroup;
 use MoonShine\Menu\MenuItem;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -64,6 +65,15 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             ])->icon('heroicons.cog-8-tooth'),
 
         ];
+    }
+
+    public function boot(): void
+    {
+        parent::boot();
+
+        moonShineAssets()->add([
+            Vite::asset('resources/css/admin.css'),
+        ]);
     }
 
     /**

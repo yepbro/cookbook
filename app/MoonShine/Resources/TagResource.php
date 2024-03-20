@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use MoonShine\Enums\PageType;
+use MoonShine\Fields\Color;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Preview;
 use MoonShine\Fields\Relationships\HasMany;
@@ -58,11 +59,15 @@ class TagResource extends ModelResource
 
     public function indexFields(): array
     {
+        $styles = [
+            'background-color',
+        ];
+
         return [
             ID::make()->sortable(),
             Text::make('Название', 'name')->sortable(),
             Text::make('Слаг', 'slug')->sortable(),
-            Preview::make('Цвет', 'class'),
+            Preview::make('Цвет', 'class', fn (Tag $item): string => html()->div('tag')->class('tag-demo-box')->style('background-color: '.$item->getColor())->toHtml()),
             HasMany::make('Статьи', 'articles', resource: new ArticleResource)
                 ->onlyLink(),
         ];
@@ -75,6 +80,7 @@ class TagResource extends ModelResource
             Text::make('Слаг', 'slug')
                 ->onApply(fn (Tag $item, ?string $value): Tag => $item->fill(['slug' => $this->prepareSlug($value, $item->name)]))
                 ->hint('Если хотите что бы слаг автоматически сгенерировался на основе названия - оставьте поле пустым.'),
+            Color::make('Цвет', 'color'),
         ];
     }
 

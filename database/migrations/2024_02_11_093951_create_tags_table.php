@@ -14,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->comment('Название');
             $table->string('slug')->unique()->comment('Слаг для урл');
-            $table->string('class')->nullable()->comment('Класс для оформления тега');
+            $table->string('color')->nullable()->comment('Цвет для оформления тега');
             $table->timestamps();
             $table->softDeletes();
         });
