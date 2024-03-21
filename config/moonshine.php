@@ -1,11 +1,11 @@
 <?php
 
+use App\Models\MoonshineUser;
 use App\MoonShine\MoonShineLayout;
 use MoonShine\Exceptions\MoonShineNotFoundException;
 use MoonShine\Forms\LoginForm;
 use MoonShine\Http\Middleware\Authenticate;
 use MoonShine\Http\Middleware\SecurityHeadersMiddleware;
-use MoonShine\Models\MoonshineUser;
 use MoonShine\Pages\ProfilePage;
 
 return [

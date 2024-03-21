@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use App\Models\MoonshineUser;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use MoonShine\Fields\ID;
@@ -12,11 +13,11 @@ use MoonShine\Resources\ModelResource;
 /**
  * @extends ModelResource<User>
  */
-class UserResource extends ModelResource
+class AuthorResource extends ModelResource
 {
-    protected string $model = User::class;
+    protected string $model = MoonshineUser::class;
 
-    protected string $title = 'Пользователи';
+    protected string $title = 'Авторы';
 
     protected string $column = 'name';
 

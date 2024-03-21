@@ -10,10 +10,10 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author_id')->comment('Автор')->constrained('users');
+            $table->foreignId('author_id')->comment('Автор')->constrained('moonshine_users');
             $table->string('heading')->comment('Заголовок');
             $table->string('slug')->unique()->comment('Слаг для урл');
-            $table->text('content')->comment('Контент');
+            $table->text('content')->nullable()->comment('Контент');
             $table->boolean('is_published')->default(false)->comment('Признак, что статья опубликована');
             $table->timestamps();
             $table->softDeletes();

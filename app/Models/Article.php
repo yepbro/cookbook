@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
+use MoonShine\Models\MoonshineUser;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\Sitemap\Contracts\Sitemapable;
@@ -44,7 +44,7 @@ class Article extends Model implements Feedable, Sitemapable
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(MoonshineUser::class, 'author_id');
     }
 
     public function tags(): BelongsToMany
@@ -102,8 +102,6 @@ class Article extends Model implements Feedable, Sitemapable
             'tags' => $this->tags->pluck('id')->toArray(),
         ];
 
-        Log::debug('toSearchableArray', $data);
-
         return $data;
     }
 
@@ -118,8 +116,8 @@ class Article extends Model implements Feedable, Sitemapable
     }
 
     // TODO: visits package
-//    public function visit(): Visits
-//    {
-//        return visits($this);
-//    }
+    //    public function visit(): Visits
+    //    {
+    //        return visits($this);
+    //    }
 }
