@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 use MoonShine\Exceptions\FieldException;
 use MoonShine\Fields\Date;
 use MoonShine\Fields\ID;
@@ -63,10 +64,8 @@ class ArticleResource extends ModelResource
             BelongsTo::make('Автор', 'author', resource: new UserResource),
             Text::make('Название', 'heading'),
             Switcher::make('Опубликовано', 'is_published')->updateOnPreview(),
-            BelongsToMany::make('Теги', 'tags', resource: new TagResource)
-                ->inLine(' ', true),
-            Date::make('Добавлено', 'created_at')
-                ->format('d.m.Y'),
+            BelongsToMany::make('Теги', 'tags', resource: new TagResource)->inLine(' ', true),
+            Date::make('Добавлено', 'created_at')->format('d.m.Y'),
         ];
     }
 
@@ -78,6 +77,8 @@ class ArticleResource extends ModelResource
             Slug::make('Slug', 'slug')->from('heading')->unique(),
             Switcher::make('Опубликовано', 'is_published')->hideOnDetail(),
             TinyMce::make('Контент', 'content'),
+            BelongsToMany::make('Теги', 'tags', resource: new TagResource)
+                ->creatable()->selectMode(),
         ];
     }
 
@@ -99,7 +100,14 @@ class ArticleResource extends ModelResource
         return [
             'author_id' => 'required|integer|exists:moonshine_users,id',
             'heading' => 'required|string|min:8|max:80',
-            'slug' => 'nullable|string|alpha_num|min:8|max:80',
+            'slug' => [
+                'nullable',
+                'string',
+                'alpha_dash',
+                'min:8',
+                'max:80',
+                Rule::unique('articles')->ignoreModel($item),
+            ],
             'content' => 'nullable|string|max:20480',
             'is_published' => 'required|boolean',
         ];
