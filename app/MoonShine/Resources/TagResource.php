@@ -13,7 +13,6 @@ use MoonShine\Enums\PageType;
 use MoonShine\Fields\Color;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Preview;
-use MoonShine\Fields\Relationships\HasMany;
 use MoonShine\Fields\Text;
 use MoonShine\QueryTags\QueryTag;
 use MoonShine\Resources\ModelResource;
@@ -68,8 +67,7 @@ class TagResource extends ModelResource
             Text::make('Название', 'name')->sortable(),
             Text::make('Слаг', 'slug')->sortable(),
             Preview::make('Цвет', 'class', fn (Tag $item): string => html()->div('tag')->class('tag-demo-box')->style('background-color: '.$item->getColor())->toHtml()),
-            HasMany::make('Статьи', 'articles', resource: new ArticleResource)
-                ->onlyLink(),
+            Text::make('Статьи', 'articles_count'),
         ];
     }
 
@@ -131,5 +129,11 @@ class TagResource extends ModelResource
             ],
             //'class' => 'nullable|string|regex:/^.+@.+$/i',
         ];
+    }
+
+    public function query(): \Illuminate\Contracts\Database\Eloquent\Builder
+    {
+        return parent::query()
+            ->withCount('articles');
     }
 }
