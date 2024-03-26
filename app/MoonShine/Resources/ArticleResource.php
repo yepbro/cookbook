@@ -10,10 +10,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Rule;
 use MoonShine\Exceptions\FieldException;
 use MoonShine\Fields\Date;
+use MoonShine\Fields\DateRange;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Preview;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\BelongsToMany;
+use MoonShine\Fields\Select;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
@@ -38,6 +40,8 @@ class ArticleResource extends ModelResource
     ];
 
     protected bool $detailInModal = true;
+
+    protected bool $saveFilterState = true;
 
     public function queryTags(): array
     {
@@ -92,6 +96,26 @@ class ArticleResource extends ModelResource
             Preview::make('Название', 'heading'),
             Preview::make('Опубликовано', 'is_published')->boolean()->hideOnForm(),
             TinyMce::make('Контент', 'content'),
+
+        ];
+    }
+
+    public function filters(): array
+    {
+        return [
+            Select::make('Статус публикации', 'is_published')
+                ->options([
+                    '1' => 'Все опубликованные',
+                    '0' => 'Все неопубликованные',
+                ])
+                ->nullable()
+                ->onApply(fn (Builder $query, $value, Select $field): Builder => $query->where('is_published', '=', (int) $value)),
+            Text::make('Название', 'heading'),
+            Text::make('Контент', 'content'),
+            BelongsTo::make('Автор', 'author', resource: new UserResource)->nullable(),
+            BelongsToMany::make('Теги', 'tags', resource: new TagResource)->selectMode(),
+            DateRange::make('Дата добавления', 'created_at')
+                ->format('d.m.Y'),
         ];
     }
 

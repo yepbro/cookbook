@@ -32,6 +32,7 @@ class Article extends Model implements Feedable, Sitemapable
         'slug',
         'content',
         'is_published',
+        'tags',
     ];
 
     protected $with = [
@@ -94,15 +95,13 @@ class Article extends Model implements Feedable, Sitemapable
 
     public function toSearchableArray(): array
     {
-        $data = [
+        return [
             'id' => $this->id,
             'heading' => $this->heading,
             'content' => $this->content,
             'created_at' => $this->created_at->getTimestamp(),
             'tags' => $this->tags->pluck('id')->toArray(),
         ];
-
-        return $data;
     }
 
     protected function makeAllSearchableUsing(Builder $query): Builder
