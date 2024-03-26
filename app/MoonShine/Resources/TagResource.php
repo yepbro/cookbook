@@ -127,7 +127,7 @@ class TagResource extends ModelResource
                 'max:30',
                 Rule::unique('tags', 'slug')->ignore($this->getItemID()),
             ],
-            //'class' => 'nullable|string|regex:/^.+@.+$/i',
+            'color' => 'nullable|string|regex:/^#[a-f0-9]{3,8}$/i',
         ];
     }
 
