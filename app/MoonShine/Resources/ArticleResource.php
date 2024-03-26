@@ -112,4 +112,12 @@ class ArticleResource extends ModelResource
             'is_published' => 'required|boolean',
         ];
     }
+
+    protected function searchQuery(string $terms): void
+    {
+        // TODO: пробрасывать сюда все
+        $this->getModel()
+            ->search($terms)
+            ->paginate(10);
+    }
 }
